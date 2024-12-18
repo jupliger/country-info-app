@@ -42,31 +42,5 @@ npm install
 5. Start the frontend server:
   npm run dev
 
-##Estrutura do Projeto
-The project structure is organized as follows:
-
-root
-|
-|----backend
-|   |----src
-|   |   |-- controllers
-|   |   |-- services
-|   |   |-- ...
-|   |-- .env
-|   |-- package.json
-|   |-- ...
-|
-|-- frontend
-|   |----src
-|   |   |-- components
-|   |   |-- pages
-|   |   |-- ...
-|   |-- .env
-|   |-- package.json
-|   |-- ...
-|
-|-- README.md
-
-
 Open your browser and go to http://localhost:3000 to access the frontend application. 
 The frontend application should communicate with the backend to fetch the necessary data.
