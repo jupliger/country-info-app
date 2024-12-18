@@ -46,26 +46,26 @@ npm install
 The project structure is organized as follows:
 
 root
-│
-├── backend
-│   ├── src
-│   │   ├── controllers
-│   │   ├── services
-│   │   └── ...
-│   ├── .env
-│   ├── package.json
-│   └── ...
-│
-├── frontend
-│   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   └── ...
-│   ├── .env
-│   ├── package.json
-│   └── ...
-│
-└── README.md
+|
+|----backend
+|   |----src
+|   |   |-- controllers
+|   |   |-- services
+|   |   |-- ...
+|   |-- .env
+|   |-- package.json
+|   |-- ...
+|
+|-- frontend
+|   |----src
+|   |   |-- components
+|   |   |-- pages
+|   |   |-- ...
+|   |-- .env
+|   |-- package.json
+|   |-- ...
+|
+|-- README.md
 
 
 Open your browser and go to http://localhost:3000 to access the frontend application. 
