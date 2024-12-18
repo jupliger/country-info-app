@@ -18,7 +18,7 @@ This project is a Full-Stack JavaScript application that provides information ab
 
 ## Setup Instructions
 
-## Backend
+### Backend
 1. Navigate to the frontend directory:
   cd country-info-app/backend
    
@@ -28,7 +28,7 @@ This project is a Full-Stack JavaScript application that provides information ab
 5. Start the backend server:
   npm run start
   
-## Frontend
+### Frontend
 1.Navigate to the frontend directory:
   cd frontend
 
