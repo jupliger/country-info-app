@@ -6,12 +6,12 @@ export class CountryController {
   constructor(private readonly countryService: CountryService) {}
 
   @Get('available-countries')
-  getAvailableCountries() {
+  async getAvailableCountries() {
     return this.countryService.getAvailableCountries();
   }
 
   @Get('country-info/:code')
-  getCountryInfo(@Param('code') code: string) {
+  async getCountryInfo(@Param('code') code: string) {
     return this.countryService.getCountryInfo(code);
   }
 }

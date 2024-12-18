@@ -1,11 +1,7 @@
-import { CountryController } from './controllers/country.controller';
-import { CountryService } from './services/country.service';
-import { HttpModule } from '@nestjs/axios';
+import { CountryModule } from './module/country.module';
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [HttpModule],
-  controllers: [CountryController],
-  providers: [CountryService],
+  imports: [CountryModule],
 })
 export class AppModule {}

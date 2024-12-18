@@ -16,8 +16,18 @@ const CountryListPage: React.FC = () => {
       try {
         const response = await axios.get('/api/available-countries');
         setCountries(response.data);
-      } catch (error) {
-        console.error('Error fetching countries:', error);
+      } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+          if (error.response) {
+            console.error('Erro ao buscar países:', error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error('Nenhuma resposta recebida:', error.request);
+          } else {
+            console.error('Erro ao configurar a requisição:', error.message);
+          }
+        } else {
+          console.error('Erro desconhecido:', error);
+        }
       }
     };
 
