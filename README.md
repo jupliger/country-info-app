@@ -30,7 +30,7 @@ This project is a Full-Stack JavaScript application that provides information ab
   
 ### Frontend
 1.Navigate to the frontend directory:
-  cd frontend
+ cd country-info-app/frontend
 
 2. Install the dependencies:
 npm install
