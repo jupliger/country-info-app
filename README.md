@@ -3,18 +3,11 @@
 This project is a Full-Stack JavaScript application that provides information about countries. It includes a Backend built with Nest.js and a Frontend  built with Next.js
 
 ## Project Overview
-
-### Backend
 **Tech Stack:**
 - Nest.js
 - Next.js
 - React.js
 - TypeScript
-
-### Frontend
-**Tech Stack:**
-- React.js
-- Next.js (preferred but not mandatory)
 
 ## Setup Instructions
 
