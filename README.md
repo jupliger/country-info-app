@@ -37,3 +37,13 @@ npm install --force
 
 Open your browser and go to http://localhost:3000 to access the frontend application. 
 The frontend application should communicate with the backend to fetch the necessary data.
+
+### Notes (Things i wish i had more time to implement) 
+
+1. Implement unit test.
+2. Better loading to the components and faster client-side response.
+3. A better country name filter to diplay information on screen (venezuela, for example).
+4. Screen response when fail to fetch information.
+5. Better Adpation of the layout to diferrent sizes os screen.
+6. Ensure that environment variables are loaded and used securely in the application.
+
