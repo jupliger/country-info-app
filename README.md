@@ -37,3 +37,7 @@ npm install --force
 
 Open your browser and go to http://localhost:3000 to access the frontend application. 
 The frontend application should communicate with the backend to fetch the necessary data.
+
+OBS: 
+I was informed on linkedIn that i would have only 7 hours to finish this project. 
+7 hours is not even close to enough to do this whole test.
