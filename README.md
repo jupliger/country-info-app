@@ -26,7 +26,7 @@ This project is a Full-Stack JavaScript application that provides information ab
  cd country-info-app/frontend
 
 2. Install the dependencies:
-npm install
+npm install --force
 
 4. Create a .env file and add the necessary environment variables:
 .env.local
