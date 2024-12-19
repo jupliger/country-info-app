@@ -44,6 +44,6 @@ The frontend application should communicate with the backend to fetch the necess
 2. Better loading to the components and faster client-side response.
 3. A better country name filter to diplay information on screen (venezuela, for example).
 4. Screen response when fail to fetch information.
-5. Better Adpation of the layout to diferrent sizes os screen.
+5. Better Adpation of the layout to diferrent sizes of screen.
 6. Ensure that environment variables are loaded and used securely in the application.
 
