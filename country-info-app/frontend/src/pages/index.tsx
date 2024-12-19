@@ -2,7 +2,6 @@ import { CategoryScale, Chart, Legend, LineElement, LinearScale, PointElement, T
 import React, { useEffect, useState } from 'react';
 
 import axiosInstance from '../axiosConfig';
-import { mockCountries } from './dadosMockados';
 import styles from './CountryListPage.module.css';
 import { useRouter } from 'next/router';
 
@@ -13,45 +12,46 @@ interface Country {
   code: string;
 }
 
+interface ApiResponse {
+  name: string;
+  countryCode: string;
+}
+
 const CountryListPage: React.FC = () => {
   const router = useRouter();
   const [countries, setCountries] = useState<Country[]>([]);
 
   useEffect(() => {
-    // const fetchCountries = async () => {
-    //   try {
-    //     const response = await axiosInstance.get('/available-countries');
-    //     setCountries(response.data);
-    //   } catch (error) {
-    //     console.error('Error fetching countries:', error);
-    //   }
-    // };
+    const fetchCountries = async () => {
+      try {
+        const response = await axiosInstance.get<ApiResponse[]>('/available-countries');
+        const fetchedCountries: Country[] = response.data.map((country) => ({
+          name: country.name,
+          code: country.countryCode,
+        }));
 
-    // fetchCountries();
+        fetchedCountries.sort((a, b) => a.name.localeCompare(b.name));
+        setCountries(fetchedCountries);
+      } catch (error) {
+        console.error('Error fetching countries:', error);
+      }
+    };
 
-    const convertedCountries: Country[] = mockCountries.map((country) => ({
-      name: country.name,
-      code: country.countryCode,
-    }));
-
-    convertedCountries.sort((a, b) => a.name.localeCompare(b.name));
-
-    setCountries(convertedCountries);
+    fetchCountries();
   }, []);
 
   const handleOnClick = (countryCode: string) => {
     router.push(`/country/${countryCode}`);
   };
 
-  
-  const groupedCountries = countries.reduce((acc, country) => {
+  const groupedCountries = countries.reduce((acc: Record<string, Country[]>, country: Country) => {
     const firstLetter = country.name[0].toUpperCase();
     if (!acc[firstLetter]) {
       acc[firstLetter] = [];
     }
     acc[firstLetter].push(country);
     return acc;
-  }, {} as Record<string, Country[]>);
+  }, {});
 
   return (
     <div className={styles.container}>
