@@ -1,16 +1,12 @@
+import { CategoryScale, Chart, Legend, LineElement, LinearScale, PointElement, Title, Tooltip } from 'chart.js';
+import { CountryInfo, mockCountryInfo } from './mockData';
 import React, { useEffect, useState } from 'react';
 
 import { Line } from 'react-chartjs-2';
-import Link from 'next/link';
-import axiosInstance from '../../axiosConfig';
+import styles from './CountryInfoPage.module.css';
 import { useRouter } from 'next/router';
 
-interface CountryInfo {
-  name: string;
-  flagUrl: string;
-  borders: string[];
-  populationData: { year: number; population: number }[];
-}
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const CountryInfoPage: React.FC = () => {
   const router = useRouter();
@@ -18,17 +14,21 @@ const CountryInfoPage: React.FC = () => {
   const [countryInfo, setCountryInfo] = useState<CountryInfo | null>(null);
 
   useEffect(() => {
-    if (code) {
-      const fetchCountryInfo = async () => {
-        try {
-          const response = await axiosInstance.get(`/country-info/${code}`);
-          setCountryInfo(response.data);
-        } catch (error) {
-          console.error('Error fetching country info:', error);
-        }
-      };
+    // if (code) {
+    //   const fetchCountryInfo = async () => {
+    //     try {
+    //       const response = await axiosInstance.get(`/country-info/${code}`);
+    //       setCountryInfo(response.data);
+    //     } catch (error) {
+    //       console.error('Error fetching country info:', error);
+    //     }
+    //   };
 
-      fetchCountryInfo();
+    //   fetchCountryInfo();
+    // }
+
+    if (code) {
+      setCountryInfo(mockCountryInfo);
     }
   }, [code]);
 
@@ -48,22 +48,34 @@ const CountryInfoPage: React.FC = () => {
     ],
   };
 
+  const handleOnClick = (countryCode: string) => {
+    router.push(`/country/${countryCode}`);
+  };
+
   return (
-    <div>
-      <h1>{countryInfo.name}</h1>
-      <img src={countryInfo.flagUrl} alt={`${countryInfo.name} flag`} />
-      <h2>Border Countries</h2>
-      <ul>
-        {countryInfo.borders.map((border) => (
-          <li key={border}>
-            <Link href={`/country/${border}`}>
-              <a>{border}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <h2>Population Over Time</h2>
-      <Line data={populationChartData} />
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>{countryInfo.name}</h1>
+      </div>
+      <img className={styles.flag} src={countryInfo.flagUrl} alt={`${countryInfo.name} flag`} />
+      <div className={styles.section}>
+        <h2 className={styles.sectionTitle}>Border Countries</h2>
+        <ul className={styles.list}>
+          {countryInfo.borders.map((border) => (
+            <div key={border} className={styles.listItem}>
+              <button className={styles.button} onClick={() => handleOnClick(border)}>
+                {border}
+              </button>
+            </div>
+          ))}
+        </ul>
+      </div>
+      <div className={styles.section}>
+        <h2 className={styles.sectionTitle}>Population Over Time</h2>
+        <div className={styles.chart}>
+          <Line data={populationChartData} />
+        </div>
+      </div>
     </div>
   );
 };
